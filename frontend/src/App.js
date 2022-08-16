@@ -1,4 +1,5 @@
 import { React } from "react"
+import DemoEvent from "./components/demoEvent";
 import Personne from "./components/Personne";
 import PersonneFun from "./components/PersonneFun";
 import TestFunctio from "./components/test";
@@ -61,11 +62,11 @@ import TestClass from "./components/testClass";
 function App() {
   return (
     <div>
-      <TestFunctio></TestFunctio>
+      {/* <TestFunctio></TestFunctio>
       <TestClass></TestClass>
       <Personne   nom="Teka"></Personne>
-      <PersonneFun prenom="Salah"  nom="Sleh"/>
-
+      <PersonneFun prenom="Salah"  nom="Sleh"/> */}
+      <DemoEvent></DemoEvent>
       </div>
   );
 }

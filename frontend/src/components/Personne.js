@@ -1,7 +1,17 @@
 import React, { Component } from 'react'
 class Personne extends Component {
-    state = {  } 
+    constructor(){
+// bloc1
+    }
+    componentWillMount(){
+//bloc2
+    }
+    componentDidMount(){
+        // bloc4
+    }
+    
     render() { 
+        // bloc3
         return (
             <div>
                 <h2>prenom:{this.props.prenom}</h2>
