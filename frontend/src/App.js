@@ -1,4 +1,6 @@
 import { React } from "react"
+import Personne from "./components/Personne";
+import PersonneFun from "./components/PersonneFun";
 import TestFunctio from "./components/test";
 import TestClass from "./components/testClass";
 
@@ -61,6 +63,9 @@ function App() {
     <div>
       <TestFunctio></TestFunctio>
       <TestClass></TestClass>
+      <Personne   nom="Teka"></Personne>
+      <PersonneFun prenom="Salah"  nom="Sleh"/>
+
       </div>
   );
 }
