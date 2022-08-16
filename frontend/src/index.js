@@ -5,6 +5,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+// function tick() {
+//   const element = (
+//     <div>
+//       <h1>Bonjour !</h1>
+//       <h2>Aujourdh'ui : {new Date().toLocaleDateString()}.</h2>
+//       <h2>Il est {new Date().toLocaleTimeString()}.</h2>
+//     </div>);
+//     root.render(element)
+//   }
+// setInterval(tick, 1000);
+
 root.render(
   <React.StrictMode>
     <App />
