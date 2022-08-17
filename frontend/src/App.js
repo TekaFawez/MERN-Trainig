@@ -1,9 +1,9 @@
 import { React } from "react"
 import DemoEvent from "./components/demoEvent";
-import Personne from "./components/Personne";
-import PersonneFun from "./components/PersonneFun";
-import TestFunctio from "./components/test";
-import TestClass from "./components/testClass";
+// import Personne from "./components/Personne";
+// import PersonneFun from "./components/PersonneFun";
+// import TestFunctio from "./components/test";
+// import TestClass from "./components/testClass";
 
 // const msg = <h1>Bienvenue à notre formation !</h1>
 // const name = " Anis ASSAS"
