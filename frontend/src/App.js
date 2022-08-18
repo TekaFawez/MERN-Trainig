@@ -10,8 +10,7 @@ import Menu from "./navigation/menu";
 function App() {
   return (
     <div>
-     {/* <Accueil></Accueil> */}
-     {/* <Presentation></Presentation> */}
+    
      <Menu/>
     </div>
   );

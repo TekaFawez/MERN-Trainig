@@ -2,7 +2,8 @@ import { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import FormAjout from './FormAjout'
-class  ListDeparts extends Component {
+import { add, getAll, remove } from '../services/operationDepats'
+class ListDeparts extends Component {
     state = {
         titre: "Qui sommes nous ?",
         contact: {
@@ -10,74 +11,85 @@ class  ListDeparts extends Component {
             email: "contact@masociete.com",
             logo: <img src="images/informatique.jpg" alt="PhotoSociete"></img>
         },
-        departs: [
-            { id: 5, nom: "Commercial" },
-            { id: 6, nom: "Développement" },
-            { id: 7, nom: "Maintenance" }
-        ],
-        
+        departs: [],
+
     }
 
-    addDepart=(d)=>{
+    addDepart = (d) => {
         let tc = this.state.departs
         let size = this.state.departs.length;
         let nouveauDepart = {
-            id :  size > 0 ? tc[size-1].id + 1 : 1 ,
-            nom : d
+            code: size > 0 ? parseInt(tc[size - 1].code) + 1 : 1,
+            name: d
         }
-        this.setState({
-            departs : [...this.state.departs, nouveauDepart]
+        // this.setState({
+        //     departs: [...this.state.departs, nouveauDepart]
+        // })
+        add((nouveauDepart),()=>{
+            this.getAllDeparts()
         })
     }
 
     deleteDepart = (id) => {
-        let tdepts = this.state.departs
-        tdepts.splice(id,1)
-        this.setState({
-            departs : tdepts
+        
+        remove(id, ()=>this.getAllDeparts())
+        // let tdepts = this.state.departs
+        // tdepts.splice(id, 1)
+        // this.setState({
+        //     departs: tdepts
+        // })
+    }
+    getAllDeparts = () => {
+        getAll((res) => {
+            console.log(res)
+            this.setState({ departs: res.data })
         })
+
+
+
+    }
+    componentDidMount = () => {
+
+        this.getAllDeparts()
     }
 
     render() {
         return (
             <div>
-              <div className="card-header">
-                            <strong>Liste des départements</strong>
-                        </div>
-                
-                {/*<form onSubmit={this.addDepart}>
-                    <input type="text" onChange={this.changeHandler}/>
-                    <button>Ajouter département</button>
-                </form>*/}
-                <FormAjout ajoutDepart={this.addDepart}/>
-                
-                <div className="card-body">
-                            <table className="table">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Département</th>
-                                    </tr>
-                                </thead>
+                <div className="card-header">
+                    <strong>Liste des départements</strong>
+                </div>
 
-                                <tbody>
-                                    {
-                                        this.state.departs.map((d, index) =>
-                                            <tr key={index}>
-                                                <td>{d.id}</td>
-                                                <td>{d.nom}</td>
-                                                <td><button onClick={()=>this.deleteDepart(index)}>X</button></td>
-                                            </tr>
-                                        )
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
+
+                <FormAjout ajoutDepart={this.addDepart} />
+
+                <div className="card-body">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Département</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {
+                                this.state.departs.map((d, id) =>
+                                    <tr key={id}>
+                                        <td>{d.code}</td>
+                                        <td>{d.name}</td>
+                                        <td><button onClick={() => this.deleteDepart(d.id)}>X</button></td>
+                                    </tr>
+                                )
+                            }
+                        </tbody>
+                    </table>
+                </div>
 
 
             </div>);
     }
 
 }
- 
-export default ListDeparts ;
+
+export default ListDeparts;
