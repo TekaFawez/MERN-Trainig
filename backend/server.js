@@ -1,5 +1,5 @@
 const express = require('express')
-const mongoose = require('mongoose')
+require('./configuration/CnxMongo')
 
 const app = express();
 
@@ -21,9 +21,7 @@ app.use('/api', router);
 
 
 
-mongoose.connect(uriCompass).then(()=>
- console.log("successful connexion DB"));
- app.listen(7000, () => {
+ app.listen(4000, () => {
 
-    console.log("the server is running http://localhost:7000")
-})
+    console.log("the server is running http://localhost:4000")
+}) 
